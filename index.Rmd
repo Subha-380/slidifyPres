@@ -1,0 +1,59 @@
+---
+title       : First Presentation
+subtitle    : slidify
+author      : Sk
+job         :
+framework   : revealjs       # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : default      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Different Plots in R
+
+---
+* R provides many ways to visualise our data for analysis. Here are a few:
+
+```{r,echo=F}
+library(datasets)
+data(cars)
+```
+
+
+####  Base Plot
+```{r,echo=TRUE}
+data(cars)
+with(cars,plot(speed,dist))
+```
+
+---
+####  Lattice Plot
+```{r}
+library(lattice)
+state <-data.frame(state.x77,region=state.region)
+xyplot(Life.Exp ~Income|region,data=state,layout = c(4,1))
+```
+
+---
+####  ggplot2 system       
+```{r, echo=T}
+library(ggplot2)
+data(diamonds)
+diamonds<-diamonds[sample(1:nrow(diamonds),2000),]
+ggplot(diamonds, aes(carat, price))+geom_point(color="firebrick")
+```
+
+---
+
+#### Histogram
+```{r,echo=3}
+data(faithful)
+# draw the histogram for the Old Faithful data on the waiting time between eruptions
+hist(faithful[,2], breaks = 15, col = 'skyblue', border = 'white',xlab = "Waiting time between eruptions", main = "Histogram")
+```
+---
+
+
+
